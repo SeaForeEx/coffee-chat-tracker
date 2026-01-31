@@ -2,6 +2,23 @@
 
 A complete guide for setting up a full-stack application with Next.js frontend and Django backend in a single project.
 
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Django REST Framework](https://img.shields.io/badge/DRF-ff1709?style=for-the-badge&logo=django&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+
+## Table of Contents
+1. [Prerequisites](#prerequisites)
+2. [Project Setup](#project-setup)
+3. [Running the Application](#running-the-application)
+4. [Common Commands](#common-commands)
+5. [Building the Application](#building-the-application)
+6. [Troubleshooting](#troubleshooting)
+7. [Useful Documentation](#useful-documentation)
+
 ## Prerequisites
 
 Install these first:
@@ -218,32 +235,6 @@ git commit -m "Initial commit: Next.js and Django setup"
 
 ---
 
-## Final Project Structure
-```
-coffee-chat-tracker/
-├── client/                    # Next.js frontend
-│   ├── app/
-│   ├── package.json
-│   └── .env.local
-├── server/                    # Django backend
-│   ├── venv/
-│   ├── coffee_chat_api/
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   └── wsgi.py
-│   ├── chats/
-│   │   ├── models.py
-│   │   ├── views.py
-│   │   ├── serializers.py
-│   │   └── urls.py
-│   ├── manage.py
-│   └── requirements.txt
-├── .gitignore
-└── README.md
-```
-
----
-
 ## Running the Application
 
 ### In VS Code
@@ -306,28 +297,6 @@ python3 manage.py startapp <name>    # Create new app
 npm run dev      # Start development server
 npm run build    # Build for production
 npm run start    # Start production server
-```
-
----
-
-## Cloning/Setting Up on New Machine
-```bash
-# Clone repo
-git clone <your-repo-url>
-cd coffee-chat-tracker
-
-# Setup frontend
-cd client
-npm install
-cd ..
-
-# Setup backend
-cd server
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python3 manage.py migrate
-cd ..
 ```
 
 ---
@@ -451,10 +420,3 @@ lsof -ti:8000 | xargs kill -9
 - **django-cors-headers**: https://github.com/adamchainz/django-cors-headers
 
 ---
-
-## Tech Stack
-
-- **Frontend**: Next.js 14+ (React), App Router
-- **Backend**: Django 4.2+, Django REST Framework
-- **Database**: SQLite (development), PostgreSQL (production)
-- **CORS**: django-cors-headers
