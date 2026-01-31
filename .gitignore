@@ -1,0 +1,17 @@
+# Client (Next.js)
+client/node_modules/
+client/.next/
+client/.env.local
+
+# Server (Django)
+server/venv/
+server/__pycache__/
+server/**/__pycache__/
+server/*.pyc
+server/**/*.pyc
+server/db.sqlite3
+server/.env
+
+# General
+.DS_Store
+*.log
