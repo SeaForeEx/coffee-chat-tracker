@@ -161,9 +161,27 @@ MIDDLEWARE = [
 ```python
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000",      # Next.js dev server
+    "http://127.0.0.1:3000",      # Alternative localhost
 ]
 ```
+
+# Django REST Framework settings (optional for now)
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # Public API for development
+    ],
+}
+```
+
+**When you'd modify REST_FRAMEWORK settings:**
+- **Authentication:** Change `AllowAny` to `IsAuthenticated` when you add user login
+- **Pagination:** Uncomment pagination settings when you have many chats and want to limit results per page (e.g., 10 chats at a time)
+- **Rate Limiting:** Add throttling classes to prevent API abuse in production
+- **Custom Renderers:** Configure JSON/XML response formats for different clients
+
+For this project, `AllowAny` permissions keep things simple during development. You'll add stricter permissions later when deploying to production.
 
 ---
 
@@ -465,11 +483,7 @@ Before moving to Step 6, here's how a typical API request flows through our Djan
 
 **Key takeaway:** Router maps URLs → ViewSet handles logic → Serializer transforms data
 
-### 6. Update Django Settings
-
-
-
-### 7. Test the API
+### 6. Test the API
 
 
 
