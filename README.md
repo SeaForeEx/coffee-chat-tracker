@@ -303,7 +303,7 @@ npm run start    # Start production server
 
 ## Building the Application
 
-### Back End Steps
+### Back End API Setup
 
 #### 1. Create Django Model
 
