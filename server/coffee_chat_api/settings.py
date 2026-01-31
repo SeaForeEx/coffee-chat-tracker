@@ -127,5 +127,14 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000",      # Next.js dev server
+    "http://127.0.0.1:3000",      # Alternative localhost
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # Public API for development
+    ],
+    # When you'd modify REST_FRAMEWORK settings:
+    # Authentication, Pagination, Rate Limiting, Custom Renderers
+}
