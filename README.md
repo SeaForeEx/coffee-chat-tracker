@@ -272,6 +272,8 @@ Visit: http://localhost:8000
 
 **Both servers run simultaneously on different ports.** The Next.js frontend (port 3000) makes API requests to the Django backend (port 8000).
 
+**Verify setup:** You should see the Django rocket at http://localhost:8000 and the Next.js welcome page at http://localhost:3000.
+
 ---
 
 ## Common Commands
@@ -308,28 +310,6 @@ npm run start    # Start production server
 
 ---
 
-## Testing Setup
-
-**Test Django:**
-```bash
-cd server
-source venv/bin/activate
-python3 manage.py runserver
-```
-Visit http://localhost:8000 - should see Django rocket 🚀
-
-**Test Next.js:**
-```bash
-cd client
-npm run dev
-```
-Visit http://localhost:3000 - should see Next.js welcome page
-
-**Test both together:**
-Run both servers simultaneously in split terminals
-
----
-
 ## Cloning/Setting Up on New Machine
 ```bash
 # Clone repo
@@ -349,6 +329,88 @@ pip install -r requirements.txt
 python3 manage.py migrate
 cd ..
 ```
+
+---
+
+## Building the Application
+
+### 1. Create Django Model
+
+**Create the Chat model in `server/chats/models.py`:**
+```python
+from django.db import models
+
+class Chat(models.Model):
+    guest = models.CharField(max_length=50)
+    chat_date = models.DateTimeField("date chatted")
+    notes = models.TextField()  # TextField allows for long-form notes
+```
+
+**Create and run migrations:**
+```bash
+# Navigate to server directory
+cd server
+
+# Create migration files
+python3 manage.py makemigrations
+
+# Apply migrations to database
+python3 manage.py migrate
+
+# Return to project root
+cd ..
+```
+
+### 2. Setup Django Admin
+
+#### Why Set Up Django Admin?
+
+Django's built-in admin interface provides a free, auto-generated UI for managing your data. This lets you:
+- Create, read, update, and delete coffee chats without building a frontend first
+- Test your model and API endpoints before writing React code
+- Verify your database structure is working correctly
+- Provide a quick admin panel for data management
+
+Setting up the admin takes 2 minutes and saves hours of debugging later.
+
+**Create an admin user**
+```bash
+# Superuser will be able to login to admin site
+python3 manage.py createsuperuser
+
+# Enter desired username and press enter
+Username: admin
+
+# Enter desired email address:
+Email address: admin@example.com
+
+# Enter password twice (first to create, second to confirm):
+Password: **********
+Password (again): *********
+Superuser created successfully.
+```
+
+**Start the development server**
+```bash
+# Make sure server is running
+python3 manage.py runserver
+```
+
+**Make chats modifiable in the admin**
+
+**File: `server/chats/admin.py`**
+```python
+from django.contrib import admin
+from .models import Chat
+
+# Register the CoffeeChat model with the admin site
+admin.site.register(Chat)
+```
+
+**Test Django admin by creating a chat**
+
+- Visit [Django admin page](http://127.0.0.1:8000/admin/) in web browser.
+- Click on "Chats" and follow directions to Add a Chat.
 
 ---
 
