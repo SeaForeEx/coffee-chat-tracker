@@ -28,8 +28,10 @@ cd coffee-chat-tracker
 # Initialize git
 git init
 git branch -m main
-```
 
+# Create README
+touch README.md
+```
 ---
 
 ### 2. Frontend Setup (Next.js)
