@@ -15,8 +15,9 @@ A complete guide for setting up a full-stack application with Next.js frontend a
 2. [Project Setup](#project-setup)
 3. [Running the Application](#running-the-application)
 4. [Common Commands](#common-commands)
-5. [Building the Application](#building-the-application)
-6. [Useful Documentation](#useful-documentation)
+5. [Building the Back End](#building-the-back-end)
+6. [Building the Front End](#building-the-front-end)
+7. [Useful Documentation](#useful-documentation)
 
 ## Prerequisites
 
@@ -300,11 +301,9 @@ npm run start    # Start production server
 
 ---
 
-## Building the Application
+## Building the Back End
 
-### Back End API Setup
-
-#### 1. Create Django Model
+### 1. Create Django Model
 
 **Create the Chat model in `server/chats/models.py`:**
 ```python
@@ -331,7 +330,7 @@ python3 manage.py migrate
 cd ..
 ```
 
-#### 2. Setup Django Admin
+### 2. Setup Django Admin
 
 **Why Set Up Django Admin?**
 
@@ -382,7 +381,7 @@ admin.site.register(Chat)
 - Visit [Django admin page](http://127.0.0.1:8000/admin/) in web browser.
 - Click on "Chats" and follow directions to Add a Chat.
 
-#### 3. Create Chat Serializer
+### 3. Create Chat Serializer
 
 **Why we need a serializer:**
 Serializers convert Django model instances to/from JSON format so they can be sent over HTTP. They also handle data validation when creating or updating Chat objects through the API.
@@ -409,7 +408,7 @@ class ChatSerializer(serializers.ModelSerializer):
 - Validate incoming JSON data when creating/updating chats
 - Handle serialization/deserialization automatically
 
-#### 4. Create Chat ViewSet
+### 4. Create Chat ViewSet
 
 **Why we need a ViewSet:**
 ViewSets handle the logic for API requests (GET, POST, PUT, DELETE). They work with serializers to process data and interact with the database. ViewSets automatically provide standard CRUD (Create, Read, Update, Delete) operations with minimal code.
@@ -442,7 +441,7 @@ class ChatViewSet(viewsets.ModelViewSet):
 
 All of these endpoints are created automatically with just these 2 lines of configuration!
 
-#### 5. Configure URLs
+### 5. Configure URLs
 
 **Why we need URL configuration:**
 URLs map HTTP requests to the appropriate ViewSet. The router automatically creates all the REST API endpoints (list, create, retrieve, update, delete) based on our ChatViewSet, and we connect them to our Django project's URL structure.
@@ -501,11 +500,17 @@ Before moving to Step 6, here's how a typical API request flows through our Djan
 
 **Key takeaway:** Router maps URLs → ViewSet handles logic → Serializer transforms data
 
-#### 6. Update Django Settings
+### 6. Update Django Settings
 
 
 
-#### 7. Test the API
+### 7. Test the API
+
+
+
+---
+
+## Building the Front End
 
 
 
