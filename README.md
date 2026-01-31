@@ -443,6 +443,18 @@ class ChatViewSet(viewsets.ModelViewSet):
 
 All of these endpoints are created automatically with just these 2 lines of configuration!
 
+#### 5. Configure URLs
+
+
+
+#### 6. Update Django Settings
+
+
+
+#### 7. Test the API
+
+
+
 ---
 
 ## Troubleshooting
@@ -461,15 +473,6 @@ This happens if you add `'chats'` to `INSTALLED_APPS` before creating the app.
 Make sure you're in the `server/` directory before running:
 ```bash
 source venv/bin/activate
-```
-
-### Port already in use
-
-If port 3000 or 8000 is already in use:
-```bash
-# Find and kill the process (Mac/Linux)
-lsof -ti:3000 | xargs kill -9
-lsof -ti:8000 | xargs kill -9
 ```
 
 ---
