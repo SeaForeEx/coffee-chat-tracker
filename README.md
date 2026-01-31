@@ -14,10 +14,9 @@ A complete guide for setting up a full-stack application with Next.js frontend a
 1. [Prerequisites](#prerequisites)
 2. [Project Setup](#project-setup)
 3. [Running the Application](#running-the-application)
-4. [Common Commands](#common-commands)
-5. [Building the Back End](#building-the-back-end)
-6. [Building the Front End](#building-the-front-end)
-7. [Useful Documentation](#useful-documentation)
+4. [Building the Back End](#building-the-back-end)
+5. [Building the Front End](#building-the-front-end)
+6. [Useful Documentation](#useful-documentation)
 
 ## Prerequisites
 
@@ -264,40 +263,6 @@ Visit: http://localhost:8000
 **Both servers run simultaneously on different ports.** The Next.js frontend (port 3000) makes API requests to the Django backend (port 8000).
 
 **Verify setup:** You should see the Django rocket at http://localhost:8000 and the Next.js welcome page at http://localhost:3000.
-
----
-
-## Common Commands
-
-### Virtual Environment
-
-**Activate (do this every time you open a new terminal for Django):**
-```bash
-cd server
-source venv/bin/activate  # Mac/Linux
-venv\Scripts\activate     # Windows
-```
-
-**Deactivate:**
-```bash
-deactivate
-```
-
-### Django Commands (run in server/ with venv active)
-```bash
-python3 manage.py runserver          # Start development server
-python3 manage.py makemigrations     # Create new migrations
-python3 manage.py migrate            # Apply migrations
-python3 manage.py createsuperuser    # Create admin user
-python3 manage.py startapp <name>    # Create new app
-```
-
-### Frontend Commands (run in client/)
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run start    # Start production server
-```
 
 ---
 
