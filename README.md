@@ -16,8 +16,7 @@ A complete guide for setting up a full-stack application with Next.js frontend a
 3. [Running the Application](#running-the-application)
 4. [Common Commands](#common-commands)
 5. [Building the Application](#building-the-application)
-6. [Troubleshooting](#troubleshooting)
-7. [Useful Documentation](#useful-documentation)
+6. [Useful Documentation](#useful-documentation)
 
 ## Prerequisites
 
@@ -454,26 +453,6 @@ All of these endpoints are created automatically with just these 2 lines of conf
 #### 7. Test the API
 
 
-
----
-
-## Troubleshooting
-
-### "No module named 'chats'" error
-
-This happens if you add `'chats'` to `INSTALLED_APPS` before creating the app.
-
-**Solution:**
-1. Comment out `'chats'` in `settings.py`
-2. Run `python3 manage.py startapp chats`
-3. Uncomment `'chats'` in `settings.py`
-
-### Virtual environment not activating
-
-Make sure you're in the `server/` directory before running:
-```bash
-source venv/bin/activate
-```
 
 ---
 
