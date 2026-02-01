@@ -57,9 +57,9 @@ touch README.md
 npx create-next-app@latest client
 
 # Setup options:
-# ✓ TypeScript? No
+# ✓ TypeScript? Yes
 # ✓ ESLint? Yes
-# ✓ Tailwind CSS? Your choice
+# ✓ Tailwind CSS? Your choice (I chose no)
 # ✓ src/ directory? No
 # ✓ App Router? Yes
 # ✓ Customize default import alias? No
