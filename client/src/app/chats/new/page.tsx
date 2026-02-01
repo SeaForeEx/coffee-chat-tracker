@@ -1,4 +1,5 @@
 import { createChat } from "@/app/actions";
+import styles from "./page.module.css";
 import ChatForm from "@/components/ChatForm/ChatForm";
 
 async function handleSubmit(data: { guest: string; chatDate: string, notes: string }) {
@@ -8,7 +9,7 @@ async function handleSubmit(data: { guest: string; chatDate: string, notes: stri
 
 export default async function NewChat() {
     return (
-        <div>
+        <div className={styles.container}>
             <h1>Create New Chat</h1>
             <ChatForm 
                 onSubmit={handleSubmit}

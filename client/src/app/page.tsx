@@ -19,7 +19,7 @@ export default async function Home() {
       <NewChatButton />
 
       {chats && chats.length > 0 ? (
-          <div>
+          <div className={styles.chatMap}>
             {chats.map((chat) => (
               <div 
                 key={chat.id} 

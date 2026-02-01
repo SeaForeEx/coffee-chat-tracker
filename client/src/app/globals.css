@@ -47,6 +47,10 @@ button {
   cursor: pointer; 
 }
 
+p {
+  margin: 20px 0;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

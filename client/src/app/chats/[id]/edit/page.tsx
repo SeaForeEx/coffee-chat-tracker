@@ -1,4 +1,5 @@
 import ChatForm from "@/components/ChatForm/ChatForm"
+import styles from "./page.module.css";
 import { getChat, updateChat } from "@/app/actions"
 
 export default async function EditChat({
@@ -17,7 +18,7 @@ export default async function EditChat({
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <h1>Edit Chat</h1>
             <ChatForm 
                 chatId={chatId}
