@@ -252,11 +252,6 @@ git commit -m "Initial commit: Next.js and Django setup"
 
 ### In VS Code
 
-Open the project root in VS Code:
-```bash
-code .
-```
-
 Open integrated terminal and split it (Ctrl+Shift+5 or Cmd+Shift+5):
 
 **Terminal 1 - Frontend:**
