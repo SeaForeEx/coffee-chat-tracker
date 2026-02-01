@@ -2,6 +2,7 @@ import { getChats } from "./actions";
 import Link from "next/link";
 import styles from "./page.module.css";
 import DeleteButton from "@/components/DeleteButton/DeleteButton";
+import EditButton from "@/components/EditButton/EditButton";
 
 export default async function Home() {
   const chats = await getChats();
@@ -26,9 +27,7 @@ export default async function Home() {
                 className={styles.guestName}
               >
                 {convertedDate(chat.chat_date)} - {chat.guest} &nbsp;
-                <Link href={`/chats/${chat.id}/edit`}>
-                  Edit
-                </Link> &nbsp;
+                <EditButton chatId={chat.id} />&nbsp;
                 <DeleteButton chatId={chat.id} />
               </div>
             ))}
