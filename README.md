@@ -18,6 +18,7 @@ A complete guide for setting up a full-stack application with Next.js frontend a
 5. [Version Control Setup](#version-control-setup)
 6. [Frontend Development](#frontend-development)
 7. [Useful Documentation](#useful-documentation)
+8. [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
 
@@ -639,5 +640,47 @@ client/src/
 - **Django**: https://docs.djangoproject.com/
 - **Django REST Framework**: https://www.django-rest-framework.org/
 - **django-cors-headers**: https://github.com/adamchainz/django-cors-headers
+
+---
+
+## Troubleshooting
+
+### Git Submodule Issue
+
+**Problem:** When running `git add .`, you see:
+```
+warning: adding embedded git repository: client
+hint: You've added another git repository inside your current repository.
+```
+
+Or when trying to commit client files:
+```
+fatal: Pathspec 'client/src/...' is in submodule 'client'
+```
+
+**Why This Happens:**
+
+`create-next-app` automatically initializes a git repository inside the `client/` folder. When you already have a git repository in the project root, this creates a "nested repository" situation. Git interprets this as a submodule (a way to include one repository inside another), which prevents individual files in `client/` from being tracked.
+
+**The Fix:**
+
+If you forgot to remove `client/.git` during initial setup:
+```bash
+# Remove submodule registration from git's cache
+git rm --cached -r client
+
+# Add client files as normal files
+git add client/
+
+# Commit the changes
+git commit -m "Fix submodule issue - add client files"
+git push origin main
+```
+
+**Prevention:**
+
+Always run `rm -rf client/.git` immediately after `npx create-next-app` when working in a monorepo (already included in Step 2).
+
+**Note:** This only happens in monorepo setups where you combine frontend and backend in one repository. Separate repositories wouldn't have this issue.
 
 ---
