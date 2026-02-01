@@ -1,5 +1,5 @@
 import { getChat } from "@/app/actions"
-import Link from "next/link"
+import HomeButton from "@/components/HomeButton/HomeButton"
 
 export default async function Chat({ 
     params 
@@ -21,9 +21,7 @@ export default async function Chat({
             <p><strong>Guest:</strong> {chat.guest}</p>
             <p><strong>Date:</strong> {convertedDate(chat.chat_date)}</p>
             <p><strong>Notes:</strong> {chat.notes}</p>
-            <Link href="/">
-                <button>Back Home</button>
-            </Link>
+            <HomeButton />
         </div>
     )
 }
