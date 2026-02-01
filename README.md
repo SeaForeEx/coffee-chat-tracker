@@ -68,14 +68,6 @@ npx create-next-app@latest client
 # IMPORTANT: Remove the nested git repository
 # create-next-app automatically initializes git, which causes submodule issues
 rm -rf client/.git
-
-# Test frontend
-cd client
-npm run dev
-# Visit http://localhost:3000
-# Stop server with Ctrl+C
-
-cd ..
 ```
 
 ---
@@ -83,6 +75,7 @@ cd ..
 ### 3. Backend Setup (Django)
 ```bash
 # Create server folder
+# Make sure you are in root folder before you do this
 mkdir server
 cd server
 
