@@ -287,6 +287,32 @@ Visit: http://localhost:8000
 
 ## Backend API Development
 
+### Project Structure
+
+The backend uses Django and Django REST Framework with the following structure:
+```
+server/
+├── coffee_chat_api/
+│   ├── settings.py                # Django settings - INSTALLED_APPS, CORS, middleware
+│   └── urls.py                    # Project-level URL routing - connects to chats app
+├── chats/
+│   ├── models.py                  # Chat model - defines database schema
+│   ├── serializers.py             # ChatSerializer - converts models to/from JSON
+│   ├── views.py                   # ChatViewSet - handles API request logic
+│   ├── admin.py                   # Django admin configuration
+│   └── migrations/
+│       └── 0001_initial.py        # Database migration files
+├── manage.py                      # Django management script
+├── requirements.txt               # Python dependencies
+└── db.sqlite3                     # SQLite database (not committed to git)
+```
+
+**Key patterns:**
+- **ModelViewSet** - Provides complete CRUD functionality automatically
+- **ModelSerializer** - Auto-generates serialization based on model fields
+- **DefaultRouter** - Auto-generates REST API URL patterns
+- **CORS Configuration** - Allows Next.js frontend to call API
+
 ### 1. Create Django Model
 
 **Create the Chat model in `server/chats/models.py`:**
@@ -574,7 +600,35 @@ git push -u origin main
 
 ## Frontend Development
 
+## Frontend Development (Next.js)
 
+### Project Structure
+
+The frontend uses Next.js 13+ App Router with the following structure:
+```
+client/src/
+├── app/
+│   ├── page.tsx                    # Landing page - displays list of all chats
+│   ├── error.tsx                   # Error boundary page
+│   ├── loading.tsx                 # Loading state UI
+│   ├── actions.ts                  # Server Actions for all API calls (CRUD operations)
+│   └── chats/
+│       ├── [id]/
+│       │   ├── page.tsx            # View single chat details
+│       │   └── edit/
+│       │       └── page.tsx        # Edit chat page (uses ChatForm)
+│       └── new/
+│           └── page.tsx            # Create new chat page (uses ChatForm)
+└── components/
+    └── ChatForm/
+        └── ChatForm.tsx            # Reusable form component for creating/editing chats
+```
+
+**Key patterns:**
+- **Server Actions** (`actions.ts`) - Centralized API calls to Django backend
+- **Dynamic Routes** (`[id]`) - Display and edit individual chats
+- **Component Reuse** - ChatForm handles both create and edit operations
+- **App Router Features** - Built-in error and loading states
 
 ---
 
