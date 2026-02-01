@@ -485,7 +485,56 @@ Before moving to Step 6, here's how a typical API request flows through our Djan
 
 ### 6. Test the API
 
+**Start the Django development server:**
+```bash
+cd server
+python3 manage.py runserver
+```
 
+**Using Django REST Framework's Browsable API:**
+
+Django REST Framework provides a built-in web interface for testing your API. Simply visit the endpoints in your browser.
+
+**1. List all chats (GET):**
+- Navigate to `http://127.0.0.1:8000/api/chats/`
+- You'll see all chats displayed in JSON format
+- The interface shows available actions and request/response details
+
+**2. Create a new chat (POST):**
+- Stay on `http://127.0.0.1:8000/api/chats/`
+- Scroll to the bottom of the page
+- Fill in the HTML form:
+  - **guest:** Enter a name
+  - **chat_date:** Enter a date (format: `2025-01-31`)
+  - **notes:** Enter some notes
+- Click the **POST** button
+- The new chat will appear in the response
+
+**3. View a specific chat (GET):**
+- Navigate to `http://127.0.0.1:8000/api/chats/1/` (or any chat ID)
+- You'll see the details of that specific chat
+
+**4. Update a chat (PUT):**
+- Go to `http://127.0.0.1:8000/api/chats/1/`
+- Scroll to the bottom
+- Modify the form fields with new values
+- Click the **PUT** button
+- The chat will be updated with your changes
+
+**5. Delete a chat (DELETE):**
+- Go to `http://127.0.0.1:8000/api/chats/1/`
+- Click the red **DELETE** button
+- Confirm the deletion
+- The chat will be removed from the database
+
+**Expected behavior:**
+- All operations should return appropriate HTTP status codes (200 OK, 201 Created, 204 No Content)
+- Data should persist in the database between requests
+- Invalid data should return validation errors
+
+**Alternative: Use Postman**
+
+For a more robust API testing experience, you can download [Postman](https://www.postman.com/), which provides features like saving requests, organizing collections, and automating tests. However, the DRF browsable API is sufficient for development and testing.
 
 ---
 
