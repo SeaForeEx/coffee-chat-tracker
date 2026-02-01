@@ -662,14 +662,17 @@ fatal: Pathspec 'client/src/...' is in submodule 'client'
 
 `create-next-app` automatically initializes a git repository inside the `client/` folder. When you already have a git repository in the project root, this creates a "nested repository" situation. Git interprets this as a submodule (a way to include one repository inside another), which prevents individual files in `client/` from being tracked.
 
+**Important:** This can happen with ANY nested `.git` directories, not just `client/`. If you created the `server/` folder first and ran `git init` inside it, then added the parent repository later, `server/` would have the same submodule issue. The pattern is always: any folder with its own `.git` directory inside a parent folder that also has a `.git` directory will be treated as a submodule.
+
 **The Fix:**
 
-If you forgot to remove `client/.git` during initial setup:
+If you forgot to remove the nested `.git` during initial setup:
 ```bash
 # Remove submodule registration from git's cache
+# Replace 'client' with 'server' if that's the submodule
 git rm --cached -r client
 
-# Add client files as normal files
+# Add files as normal
 git add client/
 
 # Commit the changes
@@ -679,7 +682,7 @@ git push origin main
 
 **Prevention:**
 
-Always run `rm -rf client/.git` immediately after `npx create-next-app` when working in a monorepo (already included in Step 2).
+Always run `rm -rf client/.git` immediately after `npx create-next-app` when working in a monorepo (already included in Step 2). More generally, never run `git init` inside a folder that's already within a git repository unless you specifically intend to use submodules.
 
 **Note:** This only happens in monorepo setups where you combine frontend and backend in one repository. Separate repositories wouldn't have this issue.
 
