@@ -14,9 +14,10 @@ A complete guide for setting up a full-stack application with Next.js frontend a
 1. [Prerequisites](#prerequisites)
 2. [Project Setup](#project-setup)
 3. [Running the Application](#running-the-application)
-4. [Building the Back End](#building-the-back-end)
-5. [Building the Front End](#building-the-front-end)
-6. [Useful Documentation](#useful-documentation)
+4. [Backend API Development](#backend-api-development)
+5. [Version Control Setup](#version-control-setup)
+6. [Frontend Development](#frontend-development)
+7. [Useful Documentation](#useful-documentation)
 
 ## Prerequisites
 
@@ -284,7 +285,7 @@ Visit: http://localhost:8000
 
 ---
 
-## Building the Back End
+## Backend API Development
 
 ### 1. Create Django Model
 
@@ -538,7 +539,40 @@ For a more robust API testing experience, you can download [Postman](https://www
 
 ---
 
-## Building the Front End
+## Version Control Setup
+
+### Create GitHub Repository
+
+**1. Create a new repository on GitHub:**
+- Go to [https://github.com/new](https://github.com/new)
+- Repository name: `coffee-chat-tracker`
+- Description: "Full-stack app for tracking coffee chats (Next.js + Django)"
+- Choose **Private** or **Public**
+- **Do NOT** initialize with README, .gitignore, or license (you already have these)
+- Click **Create repository**
+
+**2. Connect your local repository to GitHub:**
+```bash
+# Verify you're in project root
+pwd
+# Should show: /Users/[your-username]/Projects/coffee-chat-tracker
+
+# Add GitHub remote
+git remote add origin https://github.com/YOUR_USERNAME/coffee-chat-tracker.git
+
+# Verify remote was added
+git remote -v
+```
+
+**3. Push your code to GitHub:**
+```bash
+# Push to main branch
+git push -u origin main
+```
+
+---
+
+## Frontend Development
 
 
 
