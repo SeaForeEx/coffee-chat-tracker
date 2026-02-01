@@ -59,8 +59,8 @@ npx create-next-app@latest client
 # Setup options:
 # ✓ TypeScript? Yes
 # ✓ ESLint? Yes
-# ✓ Tailwind CSS? Your choice (I chose no)
-# ✓ src/ directory? No
+# ✓ Tailwind CSS? No
+# ✓ src/ directory? Yes
 # ✓ App Router? Yes
 # ✓ Customize default import alias? No
 
