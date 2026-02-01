@@ -56,9 +56,7 @@ export async function getChat(id: number): Promise<Chat> {
       cache: 'no-store'
     });
         
-    if (!res.ok) {
-      const errorText = await res.text();  
-      console.error('Error response:', errorText);  
+    if (!res.ok) { 
       throw new Error('Failed to fetch data');
     }
     return res.json();
