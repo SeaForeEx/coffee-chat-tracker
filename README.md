@@ -64,10 +64,6 @@ npx create-next-app@latest client
 # ✓ src/ directory? Yes
 # ✓ App Router? Yes
 # ✓ Customize default import alias? No
-
-# IMPORTANT: Remove the nested git repository
-# create-next-app automatically initializes git, which causes submodule issues
-rm -rf client/.git
 ```
 
 ---
