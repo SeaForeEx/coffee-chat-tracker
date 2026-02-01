@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import styles from "./ChatForm.module.css";
+
 
 type ChatFormProps = {
     chatId?: number
@@ -36,49 +38,51 @@ export default function ChatForm({
         })
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Guest:</label>
-                <input 
-                    type="text"
-                    value={guest}
-                    onChange={(e) => setGuest(e.target.value)}
-                    required
-                />
-            </div>
-        
-            <div>
-                <label>Chat Date:</label>
-                <input 
-                    type="date"
-                    value={chatDate}
-                    onChange={(e) => setChatDate(e.target.value)}
-                    required
-                />
-            </div>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div className={styles.field}>
+                    <label>Guest:</label>
+                    <input 
+                        type="text"
+                        value={guest}
+                        onChange={(e) => setGuest(e.target.value)}
+                        required
+                    />
+                </div>
+            
+                <div className={styles.field}>
+                    <label>Chat Date:</label>
+                    <input 
+                        type="date"
+                        value={chatDate}
+                        onChange={(e) => setChatDate(e.target.value)}
+                        required
+                    />
+                </div>
 
-            <div>
-                <label>Notes:</label>
-                <textarea
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
-                    required
-                />
-            </div>
+                <div className={styles.field}>
+                    <label>Notes:</label>
+                    <textarea
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)}
+                        required
+                    />
+                </div>
 
-            <button 
-                type="submit"
-                disabled={isSubmitting}
-            >
-                {isSubmitting ? 'Saving...' : 'Save'}
-            </button>
+                <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? 'Saving...' : 'Save'}
+                </button>&nbsp;
 
-            <button 
-                type="button"
-                onClick={() => chatId ? router.push(`/chats/${chatId}`) : router.push('/')}
-            >
-                Cancel
-            </button>
-        </form>
+                <button 
+                    type="button"
+                    onClick={() => chatId ? router.push(`/chats/${chatId}`) : router.push('/')}
+                >
+                    Cancel
+                </button>
+            </form>
+        </div>
     )
 }
