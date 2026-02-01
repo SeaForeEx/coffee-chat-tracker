@@ -631,7 +631,7 @@ client/src/
 
 ### Git Submodule Issue
 
-**Problem:** When running `git add .`, you see:
+**Symptoms:** You might encounter one of these errors when trying to commit your frontend code:
 ```
 warning: adding embedded git repository: client
 hint: You've added another git repository inside your current repository.
