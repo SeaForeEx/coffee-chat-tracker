@@ -27,6 +27,7 @@ STATIC_URL = '/static/'
 
 # Whitenoise for static files
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+MIDDLEWARE.insert(0, 'basicauth.middleware.BasicAuthMiddleware')  
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # CORS - Update with your Render frontend URL later
@@ -34,3 +35,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://coffee-chat-tracker.onrender.com",  # Your frontend URL    
     "http://localhost:3000",
 ]
+
+# Basic Authentication
+BASICAUTH_USERS = {
+    os.environ.get('BASICAUTH_USERNAME', 'admin'): os.environ.get('BASICAUTH_PASSWORD', 'changeme'),
+}
+BASICAUTH_DISABLE = False
