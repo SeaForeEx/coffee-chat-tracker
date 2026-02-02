@@ -3,6 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+// Use environment variable for API URL
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
 // Define the Chat type
 type Chat = {
     id: number;
@@ -17,7 +20,7 @@ export async function createChat(data: { guest: string; chatDate: string; notes:
         throw new Error('Guest, chat date, and notes are required');
     }
 
-    const res = await fetch('http://localhost:8000/api/chats', {
+    const res = await fetch(`${API_URL}/api/chats`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -39,7 +42,7 @@ export async function createChat(data: { guest: string; chatDate: string; notes:
 
 // Get All Chats
 export async function getChats(): Promise<Chat[]> {
-  const res = await fetch('http://localhost:8000/api/chats', {
+  const res = await fetch(`${API_URL}/api/chats`, {
     cache: 'no-store'
   });
   if (!res.ok) {
@@ -50,7 +53,7 @@ export async function getChats(): Promise<Chat[]> {
 
 // Get Single Chat
 export async function getChat(id: number): Promise<Chat> {
-    const url = `http://localhost:8000/api/chats/${id}`;
+    const url = `${API_URL}/api/chats/${id}`;
     
     const res = await fetch(url, {
       cache: 'no-store'
@@ -68,7 +71,7 @@ export async function updateChat(chatId: number, data: { guest: string; chatDate
         throw new Error('Guest, chat date, and notes are required');
     }
 
-    const res = await fetch(`http://localhost:8000/api/chats/${chatId}`, {
+    const res = await fetch(`${API_URL}/api/chats/${chatId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -91,7 +94,7 @@ export async function updateChat(chatId: number, data: { guest: string; chatDate
 
 // Delete Single Chat
 export async function deleteChat(chatId: number) {
-    const res = await fetch(`http://localhost:8000/api/chats/${chatId}`, {
+    const res = await fetch(`${API_URL}/api/chats/${chatId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
