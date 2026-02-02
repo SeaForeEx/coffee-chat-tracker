@@ -31,6 +31,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # CORS - Update with your Render frontend URL later
 CORS_ALLOWED_ORIGINS = [
-    "https://your-frontend-app.onrender.com",  # Update this after frontend deployment
+    "https://coffee-chat-tracker.onrender.com",  # Your frontend URL    
     "http://localhost:3000",
 ]
