@@ -666,7 +666,7 @@ git push origin main
 
 **Prevention:**
 
-Always run `rm -rf client/.git` immediately after `npx create-next-app` when working in a monorepo (already included in Step 2). More generally, never run `git init` inside a folder that's already within a git repository unless you specifically intend to use submodules.
+Always run `rm -rf client/.git` immediately after `npx create-next-app` when working in a monorepo. More generally, never run `git init` inside a folder that's already within a git repository unless you specifically intend to use submodules.
 
 **Note:** This only happens in monorepo setups where you combine frontend and backend in one repository. Separate repositories wouldn't have this issue.
 
