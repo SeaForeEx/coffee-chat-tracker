@@ -6,13 +6,6 @@ import { redirect } from "next/navigation";
 // Use environment variable for API URL
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
-// Basic Auth credentials
-const BASIC_AUTH_USERNAME = process.env.NEXT_PUBLIC_BASICAUTH_USERNAME || '';
-const BASIC_AUTH_PASSWORD = process.env.NEXT_PUBLIC_BASICAUTH_PASSWORD || '';
-
-// Create Basic Auth header
-const basicAuthHeader = 'Basic ' + Buffer.from(`${BASIC_AUTH_USERNAME}:${BASIC_AUTH_PASSWORD}`).toString('base64');
-
 // Define the Chat type
 type Chat = {
     id: number;
@@ -31,7 +24,6 @@ export async function createChat(data: { guest: string; chatDate: string; notes:
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': basicAuthHeader,
         },
         body: JSON.stringify({
             guest: data.guest,
@@ -52,9 +44,6 @@ export async function createChat(data: { guest: string; chatDate: string; notes:
 export async function getChats(): Promise<Chat[]> {
   const res = await fetch(`${API_URL}/api/chats`, {
     cache: 'no-store',
-    headers: {
-        'Authorization': basicAuthHeader,
-    }
   });
   if (!res.ok) {
     throw new Error('Failed to fetch data');
@@ -68,9 +57,6 @@ export async function getChat(id: number): Promise<Chat> {
     
     const res = await fetch(url, {
       cache: 'no-store',
-      headers: {
-        'Authorization': basicAuthHeader,
-      }
     });
         
     if (!res.ok) { 
@@ -89,7 +75,6 @@ export async function updateChat(chatId: number, data: { guest: string; chatDate
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': basicAuthHeader,
         },
         body: JSON.stringify({
             guest: data.guest,
@@ -113,7 +98,6 @@ export async function deleteChat(chatId: number) {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': basicAuthHeader,
         }
     })
 
