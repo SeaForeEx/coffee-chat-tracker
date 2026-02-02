@@ -7,8 +7,8 @@ import { redirect } from "next/navigation";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 // Basic Auth credentials
-const BASIC_AUTH_USERNAME = process.env.BASICAUTH_USERNAME || '';
-const BASIC_AUTH_PASSWORD = process.env.BASICAUTH_PASSWORD || '';
+const BASIC_AUTH_USERNAME = process.env.NEXT_PUBLIC_BASICAUTH_USERNAME || '';
+const BASIC_AUTH_PASSWORD = process.env.NEXT_PUBLIC_BASICAUTH_PASSWORD || '';
 
 // Create Basic Auth header
 const basicAuthHeader = 'Basic ' + Buffer.from(`${BASIC_AUTH_USERNAME}:${BASIC_AUTH_PASSWORD}`).toString('base64');
